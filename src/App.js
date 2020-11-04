@@ -2,24 +2,25 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Map from './components/map';
+import 'antd/dist/antd.css';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import Banner from './components/Home/Banner';
+import Headr from './components/Home/Header';
+import Page1 from './components/Home/Page1';
+import Page3 from './components/Home/Ressource';
+import './components/Home/style/style';
+
+
 function App() {
+
+  const { Header, Content, Footer } = Layout;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Map/>
+    <div className="home-page">
+      <Headr key="header" />
+      <Banner key="banner" />
+      <Page1 key="page1" />
+      <Page3 key="page3" />
+      
     </div>
   );
 }

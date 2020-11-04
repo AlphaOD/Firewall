@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 8vmin;
+  height: 5vmin;
   pointer-events: none;
 }
 
@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 30vh;
+  min-height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +35,51 @@
   to {
     transform: rotate(360deg);
   }
+}
+.control-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 320px;
+  background:  rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  padding: 12px 24px;
+  margin: 20px;
+  font-size: 13px;
+  line-height: 2;
+  color: #50505e;
+  text-transform: uppercase;
+  outline: none;
+}
+.popup-panel {
+  position: relative;
+  top: 0;
+  right: 0;
+  max-width: 320px;
+  background:  rgba(85, 85, 85, 0.66);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  /* padding: 12px 24px; */
+  /* margin: 20px; */
+  font-size: 10px;
+  line-height: 2;
+  color: #ff6f00;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+#components-layout-demo-top .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
 }

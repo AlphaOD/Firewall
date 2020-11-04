@@ -22,8 +22,10 @@ or
 npm run start
 ```
 
-### 10.15.2020 Version comment
-temporary Api key added for now in .env, to be modified.
+### 10.15.2020 Version
+temporary Api key for now in .env, to be modified.
+
+### 10.23.2020 Version
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
