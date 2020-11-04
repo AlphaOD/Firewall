@@ -171,8 +171,8 @@ export default class Map extends Component {
     return (
       <ReactMapGL
         {...viewport}
-        width="75vw"
-        height="75vh"
+        width="100vm"
+        height="100vh"
         mapStyle="mapbox://styles/mapbox/dark-v9"
         onViewportChange={this._onViewportChange}
         mapboxApiAccessToken={process.env.REACT_APP_MapboxAccessToken}

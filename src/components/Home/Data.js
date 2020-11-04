@@ -218,6 +218,6 @@ export const footer = [
   { text: 'f', src: '#' },
   { text: 'o', src: '#' },
   { text: 'o', src: '#' },
-  { text: 't', src: '#' },
+  { text: 't', src: '#' }, 
   { text: 'tt', src: 'mailto:firewall@ll.com' },
 ];

@@ -1,4 +1,4 @@
-@import './default.less';
+@import './default.scss';
 .home-page {
   .fd-content {
     min-width: 1216px;
@@ -13,7 +13,7 @@
   }
   .home-layout-wrapper {
     width: 100%;
-    height: 720px;
+    height: 320px;
     text-align: center;
     overflow: hidden;
     .home-layout {
@@ -40,7 +40,7 @@
       background: #fff;
     }
     &:nth-of-type(even) {
-      background-color: @bgColor;
+      background-color: $bgColor;
     }
   }
   h2,
@@ -51,14 +51,14 @@
   h2 {
     font-size: 30px;
     line-height: 38px;
-    color: @titleColor;
+    color: $titleColor;
     margin-top: 88px;
   }
   h3 {
     font-size: 24px;
     line-height: 32px;
     margin-bottom: 16px;
-    color: @titleColor;
+    color: $titleColor;
   }
   .line {
     width: 40px;
@@ -69,7 +69,7 @@
   }
   /* banner 区域 */
   .home-banner {
-    height: 656px;
+    height: 356px;
     color: #fff;
     g,
     ellipse {
@@ -96,13 +96,13 @@
       line-height: 46px;
       margin-bottom: 16px;
       font-weight: normal;
-      color: @titleColor;
+      color: $titleColor;
     }
     p {
       margin-bottom: 40px;
       font-size: 20px;
       line-height: 28px;
-      color: @contentColor;
+      color: $contentColor;
     }
     span {
       display: inline-block;
@@ -134,7 +134,7 @@
     }
     p {
       font-size: 16px;
-      color: @contentColor;
+      color: $contentColor;
     }
   }
   .home-hover {
@@ -179,7 +179,7 @@
           font-size: 16px;
           font-weight: normal;
           margin: 72px auto 12px;
-          color: @titleColor;
+          color: $titleColor;
         }
       }
     }
@@ -194,7 +194,7 @@
         height: 440px;
         .icon-hover {
           opacity: 0;
-          transition: opacity .45s;
+          transition: opacity 45s;
         }
         &:hover {
           .icon-hover {
@@ -215,8 +215,8 @@
       }
       p {
         margin-bottom: 12px;
-        color: @contentColor;
-        transition: color .3s;
+        color: $contentColor;
+        transition: color 3s;
         font-weight: 400;
       }
       .exp {

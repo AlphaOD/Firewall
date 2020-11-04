@@ -1,4 +1,4 @@
-import './header.less';
-import './home.less';
-import './footer.less';
-import './responsive.less';
+import './header.scss';
+import './home.scss';
+import './footer.scss';
+import './responsive.scss'; 
