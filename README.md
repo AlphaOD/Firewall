@@ -25,7 +25,7 @@ npm run start
 ### 10.15.2020 Version
 temporary Api key for now in .env, to be modified.
 
-### 10.23.2020 Version
-
+### 11.04.2020 Version
+Great ressource in Ant-design and Ant-Motion incorporated
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
