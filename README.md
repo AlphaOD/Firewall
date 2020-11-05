@@ -5,6 +5,7 @@ A project template with:
 -- React   
 -- [dotenv](https://github.com/motdotla/dotenv)   
 -- [React-map-gl](http://visgl.github.io/react-map-gl/)   
+-- [Ant design](https://ant.design)
 
 ### Discord server:
 https://discord.gg/hTapZaE   
