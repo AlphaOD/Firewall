@@ -21,7 +21,8 @@ class Banner extends React.PureComponent {
             <h1 key="h2">
               Banner
             </h1>
-            <p key="p">HERE</p>
+            <h1 key="h3">Connecting you with Information and Resources</h1>
+            <p key="p" style={{color: 'black'}}>Up to Date Fire Map with Data by Location Your Portal to Shelter</p>
             <span key="button">
               {/* <Button
                 type="primary"
@@ -35,6 +36,7 @@ class Banner extends React.PureComponent {
           </QueueAnim>
           <div className={`${className}-image-wrapper`}>
             {/* <BannerImage /> */}
+
           </div>
         </div>
       </div>

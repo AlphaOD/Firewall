@@ -17,7 +17,9 @@ export default function Header(props) {
           <Menu.Item key="2">Ressources</Menu.Item>
           <Menu.Item key="3">Pannel</Menu.Item>
         </Menu>
-        <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+        <a href="">
+          <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+        </a>
       </div>
     </header>
   );

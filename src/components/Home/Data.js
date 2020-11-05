@@ -21,11 +21,11 @@ export const Main = [
 
 export const Ressource = [
   {
-    title: 'A',
+    title: 'Find Housing',
     content: [
-      <p key="1">H5</p>,
-      <p key="2">H2</p>,
-      <p key="3">H3</p>,
+      <p key="1">Abo. Otatiis exerore-
+      rum autas que dendant evenisi nullabo rempos solorum denderit pos do- lorrum receati aspernam fuga. Ut re, utenda int prae esequo estrum sum eum quatur soles apitem invende ssequae. Osa il invenim quossun tiorero reperchicil elicillorrum que odis molore volupta aut que dipis et as et lab idellabo. Tur?
+      Hento officilis exerfer sperest faceatet etur, om- nissita inis ut lat modiate</p>,
     ],
     // exp: 'LOGO1',
     svg: (<svg width="32px" height="32px" viewBox="0 0 32 32">
@@ -63,14 +63,11 @@ export const Ressource = [
     </svg>),
   },
   {
-    title: 'H5',
+    title: 'Register as a Shelter',
     content: [
-      <p key="1">s</p>,
-      <p key="2">s</p>,
-      <p key="3">ss</p>,
-      <p key="4">sss</p>,
-      <p key="5">sss</p>,
-      <p key="6">sss</p>,
+      <p key="1">Abo. Otatiis exerore-
+      rum autas que dendant evenisi nullabo rempos solorum denderit pos do- lorrum receati aspernam fuga. Ut re, utenda int prae esequo estrum sum eum quatur soles apitem invende ssequae. Osa il invenim quossun tiorero reperchicil elicillorrum que odis molore volupta aut que dipis et as et lab idellabo. Tur?
+      Hento officilis exerfer sperest faceatet etur, om- nissita inis ut lat modiate</p>,
     ],
     svg: (
       <svg width="32px" height="32px" viewBox="0 0 32 32">
@@ -102,13 +99,11 @@ export const Ressource = [
       </svg>),
   },
   {
-    title: ' VIP',
+    title: 'Fire Prevention',
     content: [
-      <p key="1">OpenAPI</p>,
-      <p key="2">k</p>,
-      <p key="3">l</p>,
-      <p key="4">;</p>,
-      <p key="5">m</p>],
+      <p key="1">Abo. Otatiis exerore-
+      rum autas que dendant evenisi nullabo rempos solorum denderit pos do- lorrum receati aspernam fuga. Ut re, utenda int prae esequo estrum sum eum quatur soles apitem invende ssequae. Osa il invenim quossun tiorero reperchicil elicillorrum que odis molore volupta aut que dipis et as et lab idellabo. Tur?
+      Hento officilis exerfer sperest faceatet etur, om- nissita inis ut lat modiate</p>],
     svg: (
       <svg width="32px" height="32px" viewBox="0 0 32 32">
         <path
