@@ -28,7 +28,7 @@ function App() {
     <div className="home-page">
       <Headr key="header" />
       
-        <Content style={{ padding: '0 5vh' }}>
+        <Content style={{ padding: '0 2vh' }}>
           <Banner key="banner" />
           <div className="site-layout-content">
             <Main key="Main" />
