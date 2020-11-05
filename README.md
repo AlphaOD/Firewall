@@ -1,4 +1,5 @@
-# Firewall
+![Firewall](./src/static/img/fireWallLogoWFlame.svg)
+
 
 A project template with:    
 -- React   
