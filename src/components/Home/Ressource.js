@@ -21,7 +21,7 @@ export default function Ressources() {
     </Col>
   ));
   return (
-    <div className="home-layout-wrapper home-serve-wrapper">
+    <div className="home-layout-wrapper home-serve-wrapper" style={{background: "#599cce"}}>
       {/* <OverPack className="home-layout" playScale={0.4}> */}
         <QueueAnim className="home-serve" type="bottom" key="home-func" ease="easeOutQuart" leaveReverse>
           <h2 key="h2">Ressources</h2>

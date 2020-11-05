@@ -2,7 +2,7 @@ header {
     width: 100%;
     z-index: 1000;
     top: 0;
-    background-color: rgb(255, 111, 0);
+    background-color: #c14000;
     box-shadow: 2 #999;
     .header-content {
       display: flex;
@@ -28,7 +28,7 @@ header {
           display: block;
           width: 120px;
           height: 32px;
-          background: url(https://gw.alipayobjects.com/zos/rmsportal/qdWihUzYxihpnOMVhFPV.png) no-repeat 0 50%;
+          background: url(../../../static/img/fireWallLogoWFlameWhite.svg) no-repeat 0 50%;
           background-size: 120px 32px;
           text-indent: -999em;
         }

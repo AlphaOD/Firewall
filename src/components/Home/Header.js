@@ -19,7 +19,7 @@ export default function Header(props) {
           </a>
           <span>Firewall</span>
         </h1>
-        <Menu mode="horizontal" style={{'background-color': 'rgb(255, 111, 0)'}} defaultSelectedKeys={['1']}>
+        <Menu mode="horizontal" style={{'background-color': '#c14000'}} defaultSelectedKeys={['1']}>
           <Menu.Item key="1">Home</Menu.Item>
           <Menu.Item key="2">Ressources</Menu.Item>
           <Menu.Item key="3">Pannel</Menu.Item>

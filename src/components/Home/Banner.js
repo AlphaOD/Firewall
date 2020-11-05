@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import QueueAnim from 'rc-queue-anim';
 // import { Button } from 'antd';
 // import BannerImage from '../../logo.svg';
+import Canvas from '../../static/img/undraw_Relaxing_at_home_re_mror.svg';
 
 class Banner extends React.PureComponent {
   static propTypes = {
@@ -34,11 +35,12 @@ class Banner extends React.PureComponent {
               </Button> */}
             </span>
           </QueueAnim>
-          <div className={`${className}-image-wrapper`}>
+        </div>
+        <div className={`${className}-image-wrapper`}>
             {/* <BannerImage /> */}
+            <img src={Canvas} alt="Firewall canvas" />
 
           </div>
-        </div>
       </div>
     );
   }

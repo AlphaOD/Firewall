@@ -25,6 +25,7 @@
       padding: 0 12px;
       overflow: hidden;
       height: 100%;
+      background-color: #ffffff;
       >div {
         float: left;
         width: 100%;
@@ -118,6 +119,7 @@
     .home-banner-image-wrapper {
       text-align: center;
       margin-top: -120px;
+      
     }
   }
   /* 功能介绍 */
@@ -196,7 +198,6 @@
       font-size: 16px;
       .content-wrapper {
         padding: auto;
-        height: 440px;
         .icon-hover {
           opacity: 0;
           transition: opacity 45s;
