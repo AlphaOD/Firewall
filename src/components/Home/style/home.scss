@@ -1,5 +1,7 @@
 @import './default.scss';
 .home-page {
+  min-Height: "100vh";
+  position: "relative";
   .fd-content {
     min-width: 1216px;
     background: #FFF;
@@ -15,7 +17,7 @@
     width: 100%;
     height: 320px;
     text-align: center;
-    overflow: hidden;
+    // overflow: hidden;
     .home-layout {
       margin: 0 auto;
       width: 1152px;
@@ -69,7 +71,7 @@
   }
   /* banner 区域 */
   .home-banner {
-    height: 356px;
+    height: 256px;
     color: #fff;
     g,
     ellipse {
@@ -187,11 +189,14 @@
   .home-serve-wrapper {
     height: 788px;
     text-align: center;
+    overflow: auto;
+    overflow-wrap: break-word;
     .col {
       font-size: 16px;
       .content-wrapper {
-        padding: 24px 16px;
+        padding: auto;
         height: 440px;
+        
         .icon-hover {
           opacity: 0;
           transition: opacity 45s;

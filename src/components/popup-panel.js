@@ -3,14 +3,12 @@ import { List, Typography, Divider } from 'antd';
 
 
 export default function PopupPanel(props) {
+  // Screen for map interaction
   const [popupInfo, setInfo] = useState({
       props,
       data:[
         {'name': 'Racing car sprays burning fuel into crowd.'},
         {'name': 'Japanese princess to wed commoner.'},
-        {'name': 'Australian walks 100km after outback crash.'},
-        {'name': 'Man charged over missing wedding girl.'},
-        {'name': 'Los Angeles battles huge wildfires.'},
       ]
     });
     console.log(popupInfo);

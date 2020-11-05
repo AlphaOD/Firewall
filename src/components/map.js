@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import ReactMapGL, {Source, Layer} from 'react-map-gl';
 
-import ControlPanel from './control-panel';
-
 import PopupPanel from './popup-panel';
 import {clusterLayer, clusterCountLayer, unclusteredPointLayer, heatmapLayer} from './layers';
 
@@ -27,8 +25,8 @@ export default class Map extends Component {
         if (!error) {
           // Would need validation in backend
           const features = response.features;
-          const endTime = features[0].properties.time;
-          const startTime = features[features.length - 1].properties.time;
+          // const endTime = features[0].properties.time;
+          // const startTime = features[features.length - 1].properties.time;
 
           this.setState({
             data: response
@@ -45,12 +43,15 @@ export default class Map extends Component {
   _onViewportChange = viewport => this.setState({viewport});
   _onClick = event => {
     console.log(event);
+
+    //Regular click to close popup
     if (event.features[0] === undefined ){
       this.setState({
         showPopup: false
       });
       return
-    }else if (event.features[0].layer.id !== "clusters"){
+    }//Specific fire click
+    else if (event.features[0].layer.id !== "clusters"){
       console.log("IN")
       const feature = event.features[0];
       // console.log(popup);
@@ -63,14 +64,16 @@ export default class Map extends Component {
 
       return
     } 
+    //Cluster click
     const feature = event.features[0];
     const clusterId = feature.properties.cluster_id;
     const mapboxSource = this._sourceRef.current.getSource();
+    //Expections to catch
     mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
       if (err) {
         return;
       }
-
+      //movement of focus
       this._onViewportChange({
         ...this.state.viewport,
         longitude: feature.geometry.coordinates[0],
@@ -86,6 +89,8 @@ export default class Map extends Component {
 
   render() {
     const {viewport, data} = this.state;
+
+    //data to be loaded in ComponentDidMount and state
     const mapData = {
       type: 'FeatureCollection',
       features: [
@@ -204,158 +209,7 @@ export default class Map extends Component {
           closeButton={true}
           closeOnClick={false}/>
           }
-        <ControlPanel />
       </ReactMapGL>
     );
   }
  }
-
-/*function Map() {
-    // const [viewport, setViewport] = useState({
-    //   width: 400,
-    //   height: 400,
-    //   latitude: 37.7577,
-    //   longitude: -122.4376,
-    //   zoom: 8,
-    //   bearing: 0,
-    //   pitch: 0,
-    //   showPopup: false
-    // });
-    const _sourceRef = React.createRef();
-    const _onViewportChange = nextViewport => setViewport(nextViewport);
-    const _onClick = event => {
-      console.log(event);
-      if (event.features[0] === undefined ){
-        return
-      }else if (event.features[0].layer.id !== "clusters"){
-        console.log("IN")
-        const feature = event.features[0];
-        // console.log(popup);
-        // _renderPopup
-        // console.log(popup);
-        _onViewportChange({
-          ...viewport,
-          showPopup: true
-        });
-
-        return
-      } 
-      const feature = event.features[0];
-      const clusterId = feature.properties.cluster_id;
-      const mapboxSource = _sourceRef.current.getSource();
-      mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
-        if (err) {
-          return;
-        }
-  
-        _onViewportChange({
-          ...viewport,
-          showPopup: false,
-          longitude: feature.geometry.coordinates[0],
-          latitude: feature.geometry.coordinates[1],
-          zoom,
-          transitionDuration: 500
-        });
-      });
-    };
-
-    const _renderPopup = () => {
-      const popupInfo = null;
-  
-      return (
-        popupInfo && (
-          <PopupPanel/>
-        )
-      );
-    }
-
-
-    const mapData = {
-      type: 'FeatureCollection',
-      features: [
-        {
-          type: 'Feature',
-          properties: {
-            id: '1',
-            name: 'One',
-          },
-          geometry: {
-            coordinates: [-79.887, 33.015],
-            type: 'Point',
-          }
-        },
-        {
-          type: 'Feature',
-          properties: {
-            id: '2',
-            name: 'two',
-          },
-          geometry: {
-            coordinates: [-110.867, 33.42],
-            type: 'Point',
-          }
-        },
-        {
-          type: 'Feature',
-          properties: {
-            id: '3',
-            name: 'three',
-          },
-          geometry: {
-            coordinates: [ -150.5129, 64.1016, 0.0 ],
-            type: 'Point',
-          }
-        },
-        {
-          type: 'Feature',
-          properties: {
-            id: '3',
-            name: 'three',
-          },
-          geometry: {
-            coordinates: [ -152.5129, 63.1016, 0.0 ],
-            type: 'Point',
-          }
-        },
-        {
-          type: 'Feature',
-          properties: {
-            id: '3',
-            name: 'three',
-          },
-          geometry: {
-            coordinates: [ -150.5129, 63.1016, 0.0 ],
-            type: 'Point',
-          }
-        },
-        {
-          type: 'Feature',
-          properties: {
-            id: '3',
-            name: 'three',
-          },
-          geometry: {
-            coordinates: [ -150.5129, 62.1016, 0.0 ],
-            type: 'Point',
-          }
-        },
-        {
-          type: 'Feature',
-          properties: {
-            id: '10',
-            name: 'Testing point',
-          },
-          geometry: {
-            coordinates: [ -122.74041066894553, 38.0567804350058, 0.0 ],
-            type: 'Point',
-          }
-        },
-     ],
-    }
-  
-    return (
-      
-    );
-  }*/
-
-// export default Map;

@@ -1,11 +1,12 @@
 import React from 'react';
 import QueueAnim from 'rc-queue-anim';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+// import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { Row, Col } from 'antd';
-import { page3 } from './Data';
+import { Ressource } from './Data';
 
-export default function Page3() {
-  const children = page3.map((d, i) => (
+//Last part of the main page, with textual ressources
+export default function Ressources() {
+  const children = Ressource.map((d, i) => (
     <Col span={8} className="col" key={i.toString()}>
       <QueueAnim
         type="bottom"

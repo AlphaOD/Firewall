@@ -1,6 +1,7 @@
 import React from 'react';
 
-export const page1 = [
+//SVG and Data file for HOME
+export const Main = [
   {
     title: 'AA',
     content: 'A',
@@ -18,7 +19,7 @@ export const page1 = [
   },
 ];
 
-export const page3 = [
+export const Ressource = [
   {
     title: 'A',
     content: [

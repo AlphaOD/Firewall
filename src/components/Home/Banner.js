@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import QueueAnim from 'rc-queue-anim';
-import { Button } from 'antd';
-import BannerImage from '../../logo.svg';
+// import { Button } from 'antd';
+// import BannerImage from '../../logo.svg';
 
 class Banner extends React.PureComponent {
   static propTypes = {
@@ -16,11 +16,12 @@ class Banner extends React.PureComponent {
     return (
       <div className={`home-layout-wrapper ${className}`}>
         <div className="home-layout">
+            {/*For Animations may change*/}
           <QueueAnim className={`${className}-content-wrapper`} delay={300} ease="easeOutQuart">
             <h1 key="h2">
-              CCCCCCC
+              Banner
             </h1>
-            <p key="p">HEREHEREHERE</p>
+            <p key="p">HERE</p>
             <span key="button">
               {/* <Button
                 type="primary"

@@ -1,4 +1,4 @@
-
+//Layers configurations
 export const clusterLayer = {
     id: 'clusters',
     type: 'circle',
