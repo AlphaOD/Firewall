@@ -86,10 +86,15 @@
       padding-top: 0;
       text-align: left;
     }
-    .home-banner-content-wrapper,
-    .home-banner-image-wrapper {
-      width: 50%;
+    .home-banner-content-wrapper{
       display: inline-block;
+    }
+    .home-banner-image-wrapper {
+      display: inline-block;
+      position: absolute;
+      top: 18vh;
+      right: 2vw;
+      width: 50%;
     }
     .home-banner-content-wrapper {
       height: 178px;

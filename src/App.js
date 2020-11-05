@@ -10,6 +10,12 @@ import Main from './components/Home/Main';
 import Ressources from './components/Home/Ressource';
 import './components/Home/style/style';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
 
@@ -26,15 +32,28 @@ function App() {
   };
   return (
     <div className="home-page">
-      <Headr key="header" />
+      <Router>
+        <Headr key="header" />
+        <Switch>
+          <Route path="/Home">
+            <Content style={{ padding: '0 2vh' }}>
+              <Banner key="banner" />
+              <div className="site-layout-content">
+                <Main key="Main" />
+              </div>
+              <Ressources key="Ressources" />
+            </Content>
+          </Route>
+          <Route path="/ressource">
+            <Ressources key="Ressources" />
+          </Route>
+          <Route path="/map">
+            
+          </Route>
+        </Switch>
+      </Router>
       
-        <Content style={{ padding: '0 2vh' }}>
-          <Banner key="banner" />
-          <div className="site-layout-content">
-            <Main key="Main" />
-          </div>
-          <Ressources key="Ressources" />
-        </Content>
+        
 
       <BackTop>
       <div style={style}>UP</div>
