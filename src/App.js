@@ -33,9 +33,11 @@ function App() {
   return (
     <div className="home-page">
       <Router>
+        {/* Main header component with navigation and profile */}
         <Headr key="header" />
         <Switch>
           <Route path="/Home">
+            {/* Home page router */}
             <Content style={{ padding: '0 2vh' }}>
               <Banner key="banner" />
               <div className="site-layout-content">
@@ -44,6 +46,7 @@ function App() {
               <Ressources key="Ressources" />
             </Content>
           </Route>
+          {/* Ressource page router to be changed */}
           <Route path="/ressource">
             <Ressources key="Ressources" />
           </Route>
