@@ -5,19 +5,33 @@ import PopupPanel from './popup-panel';
 import {clusterLayer, clusterCountLayer, unclusteredPointLayer, heatmapLayer} from './layers';
 
 import {json as requestJson} from 'd3-request';
+import Geocoder from "react-map-gl-geocoder";
+import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+
+const queryParams = {
+  country: 'us'
+}
+const mapAccess = {
+  mapboxApiAccessToken: process.env.REACT_APP_MapboxAccessToken
+}
 
 export default class Map extends Component {
-  state = {
-    viewport: {
-      width: 400,
-      height: 400,
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8
-    },
-    showPopup: false,
-    popupInfo: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewport: {
+        width: 400,
+        height: 400,
+        latitude: 37.7577,
+        longitude: -122.4376,
+        zoom: 8
+      },
+      showPopup: false,
+      popupInfo: null,
+    };
+    this.myRef = React.createRef();
+  }
+  
   componentDidMount() {
     requestJson(
       'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
@@ -41,6 +55,7 @@ export default class Map extends Component {
 
   _sourceRef = React.createRef();
   _onViewportChange = viewport => this.setState({viewport});
+  
   _onClick = event => {
     console.log(event);
 
@@ -86,6 +101,12 @@ export default class Map extends Component {
       });
     });
   };
+
+  //for testing will be replaced by onviewportchange
+  onSelected = (viewport, item) => {
+    this.setState({viewport});
+    console.log('Selected: ', item)
+}
 
   render() {
     const {viewport, data} = this.state;
@@ -180,16 +201,29 @@ export default class Map extends Component {
         height="50vh"
         mapStyle="mapbox://styles/mapbox/dark-v9"
         onViewportChange={this._onViewportChange}
-        mapboxApiAccessToken={process.env.REACT_APP_MapboxAccessToken}
+        {...mapAccess}
         interactiveLayerIds={[clusterLayer.id, unclusteredPointLayer.id]}
         onClick={this._onClick}
         
       >
+        {/* <Geocoder
+                    {...mapAccess} onSelected={this.onSelected} viewport={viewport} hideOnSelect={true}
+                    queryParams={queryParams}
+                /> */}
+        {/* <Geocoder
+          mapRef={this.myRef}
+          containerRef={this.myRef}
+          onViewportChange={this._onViewportChange}
+          {...mapAccess}
+          position="top-left"
+        /> */}
+        
         {/* {data && (
             <Source type="geojson" data={data}>
               <Layer {...heatmapLayer} />
             </Source>
           )} */}
+          
         <Source
           type="geojson"
           data={mapData}

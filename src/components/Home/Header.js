@@ -1,10 +1,15 @@
 import React, {useState}  from 'react';
-import {Menu, Avatar, Image, Popover } from 'antd';
+import {Menu, Avatar, Popover } from 'antd';
 import { UserOutlined, MailOutlined, AppstoreOutlined, SettingOutlined} from '@ant-design/icons';
 import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
+
+import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/api';
+
+// import { Link } from 'react-router';
+// import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
 
 
 export default function Header(props) {
@@ -18,10 +23,30 @@ export default function Header(props) {
   };
   
   const { SubMenu } = Menu;
+
+  //Logout button if on Dashboard page
+  function renderLogout() {
+    return
+    //To disband to a separate component
+    if(props.location.pathname === '/Dashboard'){
+        return(
+            <div className="ml-auto">
+                <button className="btn btn-danger" onClick={() => handleLogout()}>Logout</button>
+            </div>
+        )
+    }
+  }
   var Profile = (<div>
-                <p>To be populated</p>
-                <a onClick={setVisible}>Close</a>
-                </div>);
+    <p>To be populated</p>
+    <a onClick={setVisible}>Close</a>
+    {renderLogout()}
+    </div>);
+
+  function handleLogout() {
+    localStorage.removeItem(ACCESS_TOKEN_NAME)
+    props.history.push('/login')
+  }
+
   return (
     <header className="header">
       <div className="header-content">
@@ -32,7 +57,7 @@ export default function Header(props) {
           <span>Firewall</span>
         </h1>
           {/* Routes to be programmed when starting the extra pages */}
-          <Menu style={{'background-color': '#c14000'}} onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+          <Menu style={{'backgroundColor': '#c14000'}} onClick={handleClick} selectedKeys={[current]} mode="horizontal">
             
               <Menu.Item key="Home" icon={<MailOutlined />}>
                   <Link to="/Home">
@@ -40,15 +65,38 @@ export default function Header(props) {
                   </Link>
               </Menu.Item>
               
-              <Menu.Item key="app" icon={<AppstoreOutlined />}>
+              <Menu.Item key="ressource" icon={<AppstoreOutlined />}>
                   <Link to="/ressource">
                     Ressources
                   </Link>
               </Menu.Item>
 
-            <SubMenu key="SubMenu" icon={<SettingOutlined />} title="Submenu">
+              <Menu.Item key="register" icon={<AppstoreOutlined />}>
+                  <Link to="/register">
+                    Register
+                  </Link>
+              </Menu.Item>
+
+              <Menu.Item key="login" icon={<AppstoreOutlined />}>
+                  <Link to="/login">
+                    Login
+                  </Link>
+              </Menu.Item>
+
+              <Menu.Item key="Map" icon={<AppstoreOutlined />}>
+                  <Link to="/Map">
+                    Map Only
+                  </Link>
+              </Menu.Item>
+
+
+            {/*<SubMenu key="SubMenu" icon={<SettingOutlined />} title="Submenu">
               <Menu.ItemGroup title="Item 1">
-                <Menu.Item key="setting:1">Option 1</Menu.Item>
+                <Menu.Item key="setting:1">
+                    <Link to="/map">
+                      Map
+                    </Link>
+                  </Menu.Item>
                 <Menu.Item key="setting:2">Option 2</Menu.Item>
               </Menu.ItemGroup>
               <Menu.ItemGroup title="Item 2">
@@ -59,9 +107,9 @@ export default function Header(props) {
             <Menu.Item key="alipay">
               <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
                 Login/Register
-                {/* To be done dynamicaly when linked to backend */}
+                 To be done dynamicaly when linked to backend
               </a>
-            </Menu.Item>
+            </Menu.Item>*/}
           </Menu>
         
 
