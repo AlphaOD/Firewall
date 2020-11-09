@@ -19,9 +19,6 @@ class Banner extends React.PureComponent {
         <div className="home-layout">
             {/*For Animations may change*/}
           <QueueAnim className={`${className}-content-wrapper`} delay={300} ease="easeOutQuart">
-            <h1 key="h2">
-              Banner
-            </h1>
             <h1 key="h3">Connecting you with Information and Resources</h1>
             <p key="p" style={{color: 'black'}}>Up to Date Fire Map with Data by Location Your Portal to Shelter</p>
             <span key="button">
