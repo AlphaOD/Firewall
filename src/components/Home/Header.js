@@ -1,12 +1,11 @@
 import React, {useState}  from 'react';
 import {Menu, Avatar, Popover } from 'antd';
-import { UserOutlined, MailOutlined, AppstoreOutlined, SettingOutlined} from '@ant-design/icons';
+import { UserOutlined, MailOutlined, AppstoreOutlined} from '@ant-design/icons';
 import {
-  BrowserRouter as Router,
   Link
 } from "react-router-dom";
 
-import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/api';
+import {/*API_BASE_URL,*/ ACCESS_TOKEN_NAME} from '../../constants/api';
 
 // import { Link } from 'react-router';
 // import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
@@ -22,7 +21,8 @@ export default function Header(props) {
     setCurrent(e.key);
   };
   
-  const { SubMenu } = Menu;
+  // May be needed
+  // const { SubMenu } = Menu;
 
   //Logout button if on Dashboard page
   function renderLogout() {

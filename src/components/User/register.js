@@ -26,6 +26,7 @@ export default function RegistrationForm(props) {
 
     const sendDetailsToServer = () => {
         console.log("works")
+        //waiting on Backend to test
         return
         if(state.email.length && state.password.length) {
             props.showError(null);
