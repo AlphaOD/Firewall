@@ -1,0 +1,73 @@
+.popup-panel {
+    line-height: 1.5;
+    position: relative;
+    top: 0;
+    right: 0;
+    font-weight: 500;
+    max-width: 320px;
+    background-color: #c140009d;
+    box-shadow: 6px 12px 4px rgb(72 72 72 / 41%);
+    border-radius: .3rem;
+    padding: .5rem 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: block !important;
+    width: min-content;
+    bottom: auto;
+    margin: 0;
+    color: #f4f4f5;
+    right: 0 !important;
+    top: 64px !important;
+    position: absolute;
+    animation-name: fadeInUp;
+    animation-fill-mode: both;
+    animation-duration: .5s;
+    list-style: none;
+    text-align: left;
+    background-clip: padding-box;
+    font-size: 1rem;
+    border: 1px solid rgba(0, 0, 0, .15);
+    min-width: 10rem;
+    z-index: 1000;
+    will-change: transform;
+    transform: translate3d(-177px, 40px, 0px);
+    font-size: 10px;
+    line-height: 2;
+    color: #ff6f00;
+    text-transform: uppercase;
+    outline: none;
+}
+.popup-title{
+    font-weight: 700;
+    margin-bottom: .5rem;
+    text-align: center!important;
+    line-height: .5rem;
+}
+.popup-info{
+    width: 265px;
+    display: block;
+    margin: 0;
+    -webkit-transition: margin-top .2s ease;
+    transition: margin-top .2s ease;
+    border: none;
+    font-size: .8rem;
+    line-height: 20px;
+    padding: 2px 8px;
+    color: #f8f8f8;
+    border-radius: 10px;
+    line-height: .5;
+}
+.popup-list{
+    display: block;
+    max-height: 320px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, .15);
+}
+.popup-span{
+    margin-right: 1rem;
+    float: left;
+}

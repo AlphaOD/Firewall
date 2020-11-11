@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { List, Typography, Divider } from 'antd';
+import "./style/popup.css";
 
 
 export default function PopupPanel(props) {
@@ -14,18 +15,19 @@ export default function PopupPanel(props) {
     console.log(popupInfo);
     return (
       <div className="popup-panel">
-        <Divider orientation="left">ANT test</Divider>
+        <Divider className="popup-title" orientation="left">Fire information</Divider>
     <List
-      header={<div>Popup information</div>}
-      footer={<div>Popup information</div>}
+      header={<div className="popup-info">County Name</div>}
+      footer={<div className="popup-info">State Name</div>}
       bordered
       dataSource={popupInfo.data}
       renderItem={item => (
-        <List.Item>
-          <Typography.Text mark>[Info]</Typography.Text> {item.name}
+        <List.Item className="popup-list">
+          <Typography.Text  className="popup-span" mark>[Info]</Typography.Text> 
+          <p>{item.name}</p>
         </List.Item>
       )}
     />
-      </div>
+    </div>
     );
 }

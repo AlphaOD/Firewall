@@ -89,6 +89,12 @@ export default function Header(props) {
                   </Link>
               </Menu.Item>
 
+              <Menu.Item key="test" icon={<AppstoreOutlined />}>
+                  <Link to="/test">
+                    DEV
+                  </Link>
+              </Menu.Item>
+
 
             {/*<SubMenu key="SubMenu" icon={<SettingOutlined />} title="Submenu">
               <Menu.ItemGroup title="Item 1">

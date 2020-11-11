@@ -26,6 +26,9 @@ import {
 import { createBrowserHistory } from 'history'
 
 
+import PopupPanel from './components/map/popup-panel';
+
+
 function App() {
 
 
@@ -75,6 +78,9 @@ function App() {
             <Login showError={updateErrorMessage} updateTitle={updateTitle}/>
           </Route>
 
+          <Route exact path='/test'>
+            <PopupPanel showError={updateErrorMessage} updateTitle={updateTitle}/>
+          </Route>
           <PrivateRoute path="/dashboard">
               <Dashboard/>
           </PrivateRoute>

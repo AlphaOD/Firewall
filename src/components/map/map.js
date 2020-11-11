@@ -5,8 +5,8 @@ import PopupPanel from './popup-panel';
 import {clusterLayer, clusterCountLayer, unclusteredPointLayer, heatmapLayer} from './layers';
 
 import {json as requestJson} from 'd3-request';
-import Geocoder from "react-map-gl-geocoder";
-import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+// import Geocoder from "react-map-gl-geocoder";
+// import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 const queryParams = {
   country: 'us'
@@ -55,6 +55,15 @@ export default class Map extends Component {
 
   _sourceRef = React.createRef();
   _onViewportChange = viewport => this.setState({viewport});
+
+  handleGeocoderViewportChange = (newViewport) => {
+      const geocoderDefaultOverrides = { transitionDuration: 1000 };
+
+      return this._onViewportChange({
+        ...newViewport,
+        ...geocoderDefaultOverrides
+      });
+    };
   
   _onClick = event => {
     console.log(event);
@@ -207,13 +216,8 @@ export default class Map extends Component {
         
       >
         {/* <Geocoder
-                    {...mapAccess} onSelected={this.onSelected} viewport={viewport} hideOnSelect={true}
-                    queryParams={queryParams}
-                /> */}
-        {/* <Geocoder
-          mapRef={this.myRef}
-          containerRef={this.myRef}
-          onViewportChange={this._onViewportChange}
+          mapRef={this._sourceRef.current}
+          onViewportChange={this.handleGeocoderViewportChange}
           {...mapAccess}
           position="top-left"
         /> */}
