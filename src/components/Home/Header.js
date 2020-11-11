@@ -110,9 +110,6 @@ export default function Header(props) {
                  To be done dynamicaly when linked to backend
               </a>
             </Menu.Item>*/}
-          </Menu>
-        
-
 
         <Popover
         content={Profile}
@@ -123,6 +120,7 @@ export default function Header(props) {
       >
           <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
       </Popover>
+      </Menu>
 
       </div>
     </header>
