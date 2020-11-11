@@ -12,7 +12,9 @@ export default function PopupPanel(props) {
         {'name': 'Japanese princess to wed commoner.'},
       ]
     });
+    
     console.log(popupInfo);
+
     return (
       <div className="popup-panel">
         <Divider className="popup-title" orientation="left">Fire information</Divider>

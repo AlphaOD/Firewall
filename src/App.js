@@ -16,8 +16,6 @@ import Dashboard from "./components/Dashboard/Dashboard";
 
 import PrivateRoute from './utils/PrivateRoute';
 
-import AlertModal from './components/User/AlertModal'; 
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,20 +29,11 @@ import PopupPanel from './components/map/popup-panel';
 
 function App() {
 
-
+  //will be useful evntually for page titles
   const [title, updateTitle] = useState(null);
   const [errorMessage, updateErrorMessage] = useState(null);
+
   const { Content } = Layout;
-  /*const style = {
-    height: 40,
-    width: 40,
-    lineHeight: '40px',
-    borderRadius: 4,
-    backgroundColor: '#1088e9',
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 14,
-  };*/
   return (
     <div className="home-page">
       <Router history={createBrowserHistory}>
@@ -67,20 +56,23 @@ function App() {
           <Route path="/ressource">
             <Ressources key="Ressources" />
           </Route>
-
+    
           <Route exact path='/map' component={Main} />
 
           <Route exact path='/Register'>
             <Register showError={updateErrorMessage} updateTitle={updateTitle}/>
           </Route>
-
+          {/* To be combined conditionally in next commit */}
           <Route exact path='/Login'>
             <Login showError={updateErrorMessage} updateTitle={updateTitle}/>
           </Route>
 
+          {/* Development testing page, will get rid of */}
           <Route exact path='/test'>
             <PopupPanel showError={updateErrorMessage} updateTitle={updateTitle}/>
           </Route>
+
+          {/* Private Route for only connected users */}
           <PrivateRoute path="/dashboard">
               <Dashboard/>
           </PrivateRoute>

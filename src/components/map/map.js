@@ -2,15 +2,18 @@ import React, {Component} from 'react';
 import ReactMapGL, {Source, Layer} from 'react-map-gl';
 
 import PopupPanel from './popup-panel';
-import {clusterLayer, clusterCountLayer, unclusteredPointLayer, heatmapLayer} from './layers';
+import {clusterLayer, clusterCountLayer, unclusteredPointLayer/*, heatmapLayer*/} from './layers';
 
 import {json as requestJson} from 'd3-request';
+
+// For Searching purpose, WIP
+
 // import Geocoder from "react-map-gl-geocoder";
 // import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+// const queryParams = {
+//   country: 'us'
+// }
 
-const queryParams = {
-  country: 'us'
-}
 const mapAccess = {
   mapboxApiAccessToken: process.env.REACT_APP_MapboxAccessToken
 }
@@ -37,10 +40,10 @@ export default class Map extends Component {
       'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
       (error, response) => {
         if (!error) {
-          // Would need validation in backend
-          const features = response.features;
-          // const endTime = features[0].properties.time;
-          // const startTime = features[features.length - 1].properties.time;
+            // Would need validation in backend
+          // const features = response.features;
+            // const endTime = features[0].properties.time;
+            // const startTime = features[features.length - 1].properties.time;
 
           this.setState({
             data: response
@@ -118,7 +121,7 @@ export default class Map extends Component {
 }
 
   render() {
-    const {viewport, data} = this.state;
+    const {viewport} = this.state;
 
     //data to be loaded in ComponentDidMount and state
     const mapData = {
@@ -215,6 +218,7 @@ export default class Map extends Component {
         onClick={this._onClick}
         
       >
+        {/* Geocoder for searching - WIP */}
         {/* <Geocoder
           mapRef={this._sourceRef.current}
           onViewportChange={this.handleGeocoderViewportChange}
@@ -222,12 +226,14 @@ export default class Map extends Component {
           position="top-left"
         /> */}
         
+        {/* Data from database - WIP */}
         {/* {data && (
             <Source type="geojson" data={data}>
               <Layer {...heatmapLayer} />
             </Source>
           )} */}
           
+        {/* cluster layers */}
         <Source
           type="geojson"
           data={mapData}
@@ -240,6 +246,8 @@ export default class Map extends Component {
           <Layer {...clusterCountLayer} />
           <Layer {...unclusteredPointLayer} />
         </Source>
+
+        {/* Popup - Fire Informations */}
         {this.state.showPopup && <PopupPanel
           info={this.state.popupInfo}
           latitude={37.78}
@@ -247,6 +255,7 @@ export default class Map extends Component {
           closeButton={true}
           closeOnClick={false}/>
           }
+          
       </ReactMapGL>
     );
   }
