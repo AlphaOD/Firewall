@@ -124,7 +124,8 @@ export default class Map extends Component {
     const {viewport} = this.state;
 
     //data to be loaded in ComponentDidMount and state
-    const mapData = {
+    const mapData = require('../../static/ex/Shelter.geojson');
+    const a = {
       type: 'FeatureCollection',
       features: [
         {

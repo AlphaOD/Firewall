@@ -41,7 +41,7 @@ function App() {
         <Headr key="header" />
         <Switch>
         
-          <Route path="/Home">
+          <Route exact path="/">
             {/* Home page router */}
             <Content style={{ padding: '0 2vh' }}>
               <Banner key="banner" />

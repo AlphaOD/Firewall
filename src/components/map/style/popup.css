@@ -5,7 +5,7 @@
     right: 0;
     font-weight: 500;
     max-width: 320px;
-    background-color: #c140009d;
+    background-color: #599cce;
     box-shadow: 6px 12px 4px rgb(72 72 72 / 41%);
     border-radius: .3rem;
     padding: .5rem 0;
@@ -53,7 +53,7 @@
     font-size: .8rem;
     line-height: 20px;
     padding: 2px 8px;
-    color: #f8f8f8;
+    color: #c140009d;
     border-radius: 10px;
     line-height: .5;
 }

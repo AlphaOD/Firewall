@@ -60,7 +60,7 @@ export default function Header(props) {
           <Menu style={{'backgroundColor': '#c14000'}} onClick={handleClick} selectedKeys={[current]} mode="horizontal">
             
               <Menu.Item key="Home" icon={<MailOutlined />}>
-                  <Link to="/Home">
+                  <Link to="/">
                     Home
                   </Link>
               </Menu.Item>
