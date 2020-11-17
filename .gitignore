@@ -20,6 +20,10 @@
 .env.test.local
 .env.production.local
 
+#datasets
+.geojson
+/src/static/ex
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
