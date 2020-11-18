@@ -3,8 +3,9 @@ import ReactMapGL, {Source, Layer} from 'react-map-gl';
 
 import PopupPanel from './popup-panel';
 import {clusterLayer, clusterCountLayer, unclusteredPointLayer/*, heatmapLayer*/} from './layers';
+import Pins from './pins';
 
-import {json as requestJson} from 'd3-request';
+import axios from 'axios';
 
 // For Searching purpose, WIP
 
@@ -31,30 +32,37 @@ export default class Map extends Component {
       },
       showPopup: false,
       popupInfo: null,
+      isLoaded: false,
+      data: null,
     };
     this.myRef = React.createRef();
   }
   
   componentDidMount() {
-    requestJson(
-      'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
-      (error, response) => {
-        if (!error) {
-            // Would need validation in backend
-          // const features = response.features;
-            // const endTime = features[0].properties.time;
-            // const startTime = features[features.length - 1].properties.time;
-
-          this.setState({
-            data: response
-          });
-        }
-      }
-    );
+     //Getting only data for opened shelters
+    axios.get(`https://opendata.arcgis.com/datasets/bcaf5fdb3db24c78afee52d4c8a02748_5.geojson?where=%20(FACILITY_USAGE_CODE%20%3D%20'EVAC'%20OR%20FACILITY_USAGE_CODE%20%3D%20'BOTH')%20%20AND%20%20(SHELTER_STATUS_CODE%20%3D%20'INACTIVE'%20OR%20SHELTER_STATUS_CODE%20%3D%20'ALERT')%20`)
+    .then(res => {
+      console.log(res)
+      try {
+        var d = res.data; 
+    } catch (e) {
+      console.log(e)
+    }
+    
+      this.setState({
+        data: d,
+        isLoaded: true
+      });
+    })
   };
+
   componentDidUpdate(){
     
   }
+
+  _onClickMarker = shelter => {
+    this.setState({popupInfo: shelter, showPopup:true});
+  };
 
   _sourceRef = React.createRef();
   _onViewportChange = viewport => this.setState({viewport});
@@ -70,6 +78,7 @@ export default class Map extends Component {
   
   _onClick = event => {
     console.log(event);
+    console.log(this.state.viewport.zoom);
 
     //Regular click to close popup
     if (event.features[0] === undefined ){
@@ -120,11 +129,10 @@ export default class Map extends Component {
     console.log('Selected: ', item)
 }
 
+  
   render() {
     const {viewport} = this.state;
-
-    //data to be loaded in ComponentDidMount and state
-    const mapData = require('../../static/ex/Shelter.geojson');
+    const mapdata = require('../../static/ex/fire.geojson');
     const a = {
       type: 'FeatureCollection',
       features: [
@@ -207,57 +215,66 @@ export default class Map extends Component {
         },
      ],
     }
+    const { isLoaded, data } = this.state;
     return (
-      <ReactMapGL
-        {...viewport}
-        width="100vm"
-        height="50vh"
-        mapStyle="mapbox://styles/mapbox/dark-v9"
-        onViewportChange={this._onViewportChange}
-        {...mapAccess}
-        interactiveLayerIds={[clusterLayer.id, unclusteredPointLayer.id]}
-        onClick={this._onClick}
-        
-      >
-        {/* Geocoder for searching - WIP */}
-        {/* <Geocoder
-          mapRef={this._sourceRef.current}
-          onViewportChange={this.handleGeocoderViewportChange}
-          {...mapAccess}
-          position="top-left"
-        /> */}
-        
-        {/* Data from database - WIP */}
-        {/* {data && (
-            <Source type="geojson" data={data}>
-              <Layer {...heatmapLayer} />
+      <div>
+      {isLoaded? (
+          <ReactMapGL
+            {...viewport}
+            width="100vm"
+            height="50vh"
+            mapStyle="mapbox://styles/mapbox/dark-v9"
+            onViewportChange={this._onViewportChange}
+            {...mapAccess}
+            interactiveLayerIds={[clusterLayer.id, unclusteredPointLayer.id]}
+            onClick={this._onClick}
+          >
+            {/* Geocoder for searching - WIP */}
+            {/* <Geocoder
+              mapRef={this._sourceRef.current}
+              onViewportChange={this.handleGeocoderViewportChange}
+              {...mapAccess}
+              position="top-left"
+            /> */}
+            
+            {/* Data from database - WIP */}
+            {/* {data && (
+                <Source type="geojson" data={data}>
+                  <Layer {...heatmapLayer} />
+                </Source>
+              )} */}
+              
+            {/* cluster layers */}
+            <Source
+              type="geojson"
+              data={mapdata}
+              cluster={true}
+              clusterMaxZoom={14}
+              clusterRadius={50}
+              ref={this._sourceRef}
+            >
+              <Layer  {...clusterLayer} />
+              <Layer {...clusterCountLayer('visible')} />
+              <Layer {...unclusteredPointLayer} />
             </Source>
-          )} */}
-          
-        {/* cluster layers */}
-        <Source
-          type="geojson"
-          data={mapData}
-          cluster={true}
-          clusterMaxZoom={14}
-          clusterRadius={50}
-          ref={this._sourceRef}
-        >
-          <Layer  {...clusterLayer} />
-          <Layer {...clusterCountLayer} />
-          <Layer {...unclusteredPointLayer} />
-        </Source>
 
-        {/* Popup - Fire Informations */}
-        {this.state.showPopup && <PopupPanel
-          info={this.state.popupInfo}
-          latitude={37.78}
-          longitude={-122.41}
-          closeButton={true}
-          closeOnClick={false}/>
-          }
+            {/* <Pins data={data} onClick={this._onClickMarker} /> */}
+            
+
+            {/* Popup - Fire Informations */}
+            {this.state.showPopup && <PopupPanel
+              info={this.state.popupInfo}
+              latitude={37.78}
+              longitude={-122.41}
+              closeButton={true}
+              closeOnClick={false}/>
+              }
+              
+          </ReactMapGL>): 
           
-      </ReactMapGL>
+          // To be changed into a loading scene
+          <div/>};
+          </div>
     );
   }
  }
