@@ -10,6 +10,7 @@ function LoginForm(props) {
         password : "",
         successMessage: null
     })
+
     const handleChange = (e) => {
         const {id , value} = e.target   
         setState(prevState => ({
@@ -24,8 +25,13 @@ function LoginForm(props) {
             "email":state.email,
             "password":state.password,
         }
-        axios.post(API_BASE_URL+'/user/login', payload)
+        // const instance = axios.create();
+        // console.log('headers: ', instance.defaults.headers);
+        // instance.defaults.headers.common = {};
+        // instance.defaults.headers.common.accept = 'application/json';
+        axios.post('https://firewall.hyddwn.net/api/v1/login', payload)
             .then(function (response) {
+                console.log(response);
                 if(response.status === 200){
                     setState(prevState => ({
                         ...prevState,
