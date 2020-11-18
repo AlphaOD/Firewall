@@ -5,8 +5,6 @@
     right: 0;
     font-weight: 500;
     max-width: 320px;
-    background: -webkit-linear-gradient(left, #c14000, #599cce);
-    background: linear-gradient(to right, #c14000, #599cce);
     box-shadow: -3px -3px 2px 1px rgb(140 110 101 / 43%);
     border-radius: .3rem;
     padding: .5rem 0;
@@ -37,6 +35,12 @@
     color: #ff6f00;
     text-transform: uppercase;
     outline: none;
+}
+.shelter{
+    background:  rgba(152,51,1,1);
+}
+.fire{
+    background: rgba(12,68,117,1);
 }
 .popup-title{
     font-weight: 700;

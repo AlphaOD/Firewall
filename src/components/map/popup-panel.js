@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import { List, Typography, Divider } from 'antd';
 import "./style/popup.css";
+import {
+  HomeOutlined,
+} from '@ant-design/icons';
+import icon from '../../static/img/firewallLogo.svg';
 
 
 export default function PopupPanel(props) {
@@ -12,8 +16,8 @@ export default function PopupPanel(props) {
 
     if(props.type){
       return (
-        <div className="popup-panel">
-          <Divider className="popup-title" orientation="left">Fire information</Divider>
+        <div className="popup-panel fire">
+          <Divider className="popup-title" orientation="left"><img style={{ width: "3rem"}} src={icon} alt="FireLogo" />Fire information</Divider>
       {/* <List
         header={<div className="popup-info">County Name</div>}
         footer={<div className="popup-info">State Name</div>}
@@ -57,8 +61,8 @@ export default function PopupPanel(props) {
       );
     }else{
       return (
-        <div className="popup-panel">
-          <Divider className="popup-title" orientation="left">Shelter information</Divider>
+        <div className="popup-panel shelter">
+          <Divider className="popup-title" orientation="left"><HomeOutlined />Shelter information</Divider>
           <section>
           <h1>{props.info.COUNTY_PARISH}</h1>
           <div className="tbl-header">
