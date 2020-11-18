@@ -7,13 +7,8 @@ export default function PopupPanel(props) {
   // Screen for map interaction
   const [popupInfo, setInfo] = useState({
       props,
-      data:[
-        {'name': 'Racing car sprays burning fuel into crowd.'},
-        {'name': 'Japanese princess to wed commoner.'},
-      ]
     });
     
-    console.log(popupInfo);
 
     if(props.type){
       return (
