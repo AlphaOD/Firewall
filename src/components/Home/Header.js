@@ -52,9 +52,7 @@ export default function Header(props) {
       <div className="header-content">
         <h1>
           <a href="./index.js">
-            <span>Firewall</span>
           </a>
-          <span>Firewall</span>
         </h1>
           {/* Routes to be programmed when starting the extra pages */}
           <Menu style={{'backgroundColor': '#c14000'}} onClick={handleClick} selectedKeys={[current]} mode="horizontal">
