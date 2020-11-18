@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 // import './LoginForm.css';
-import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/api';
+// import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/api';
 import { withRouter } from "react-router-dom";
 
 function LoginForm(props) {
     const [state , setState] = useState({
-        email : "",
+        username : "",
         password : "",
         successMessage: null
     })
@@ -22,22 +22,21 @@ function LoginForm(props) {
     const handleSubmitClick = (e) => {
         e.preventDefault();
         const payload={
-            "email":state.email,
-            "password":state.password,
+            "Username":state.username,
+            "Password":state.password,
         }
-        // const instance = axios.create();
-        // console.log('headers: ', instance.defaults.headers);
-        // instance.defaults.headers.common = {};
-        // instance.defaults.headers.common.accept = 'application/json';
         axios.post('https://firewall.hyddwn.net/api/v1/login', payload)
             .then(function (response) {
-                console.log(response);
                 if(response.status === 200){
+                    
+                    //For showcase purposes, works as long as it talks to the server
+                    (response.data.token != null)? 
+                        localStorage.setItem('ACCESS_TOKEN_NAME',response.data.token) :
+                        localStorage.setItem('ACCESS_TOKEN_NAME', '0001');
                     setState(prevState => ({
                         ...prevState,
                         'successMessage' : 'Login successful. Redirecting to home page..'
                     }))
-                    localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
                     redirectToHome();
                     props.showError(null)
                 }
@@ -54,7 +53,7 @@ function LoginForm(props) {
     }
     const redirectToHome = () => {
         props.updateTitle('Home')
-        props.history.push('/home');
+        props.history.push('/');
     }
     const redirectToRegister = () => {
         props.history.push('/register'); 
@@ -67,10 +66,10 @@ function LoginForm(props) {
                 <label htmlFor="exampleInputEmail1">Email address</label>
                 <input type="email" 
                        className="form-control" 
-                       id="email" 
+                       id="username" 
                        aria-describedby="emailHelp" 
                        placeholder="Enter email" 
-                       value={state.email}
+                       value={state.username}
                        onChange={handleChange}
                 />
                 <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -90,7 +89,7 @@ function LoginForm(props) {
                 <button 
                     type="submit" 
                     className="btn btn-primary"
-                    onClick={handleSubmitClick}
+                    onClick={handleSubmitClick.bind(this)}
                 >Submit</button>
             </form>
             <div className="alert alert-success mt-2" style={{display: state.successMessage ? 'block' : 'none' }} role="alert">

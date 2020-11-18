@@ -5,7 +5,7 @@ import {
   Link
 } from "react-router-dom";
 
-import {/*API_BASE_URL,*/ ACCESS_TOKEN_NAME} from '../../constants/api';
+// import {/*API_BASE_URL,*/ ACCESS_TOKEN_NAME} from '../../constants/api';
 
 // import { Link } from 'react-router';
 // import { LoginLink, LogoutLink, Authenticated, NotAuthenticated } from 'react-stormpath';
@@ -13,7 +13,7 @@ import {/*API_BASE_URL,*/ ACCESS_TOKEN_NAME} from '../../constants/api';
 
 export default function Header(props) {
   const [visible, setVisible] = useState(false);
-  const [current, setCurrent] = useState('Home');
+  const [current, setCurrent] = useState(window.location.pathname.slice(1));
 
   const handleClick = e => {
     //To change into only using hook
@@ -28,24 +28,24 @@ export default function Header(props) {
   function renderLogout() {
     return
     //To disband to a separate component
-    if(props.location.pathname === '/Dashboard'){
+    /*if(props.location.pathname === '/Dashboard'){
         return(
             <div className="ml-auto">
                 <button className="btn btn-danger" onClick={() => handleLogout()}>Logout</button>
             </div>
         )
-    }
+    }*/
   }
   var Profile = (<div>
     <p>To be populated</p>
-    <a onClick={setVisible}>Close</a>
+    <a onClick={setVisible} href="./">Close</a>
     {renderLogout()}
     </div>);
 
-  function handleLogout() {
+/*  function handleLogout() {
     localStorage.removeItem(ACCESS_TOKEN_NAME)
     props.history.push('/login')
-  }
+  }*/
 
   return (
     <header className="header">
@@ -69,11 +69,11 @@ export default function Header(props) {
                   </Link>
               </Menu.Item>
 
-              <Menu.Item key="register" icon={<AppstoreOutlined />}>
+              {/* <Menu.Item key="register" icon={<AppstoreOutlined />}>
                   <Link to="/register">
                     Register
                   </Link>
-              </Menu.Item>
+              </Menu.Item> */}
 
               <Menu.Item key="login" icon={<AppstoreOutlined />}>
                   <Link to="/login">
@@ -83,15 +83,21 @@ export default function Header(props) {
 
               <Menu.Item key="Map" icon={<AppstoreOutlined />}>
                   <Link to="/Map">
-                    Map Only
+                    Full Map
                   </Link>
               </Menu.Item>
+              {(props.isConnected? (<Menu.Item key="dashboard" icon={<AppstoreOutlined />}>
+                  <Link to="/Dashboard">
+                    Dashboard
+                  </Link>
+              </Menu.Item>): null )}
+              
 
-              <Menu.Item key="test" icon={<AppstoreOutlined />}>
+              {/* <Menu.Item key="test" icon={<AppstoreOutlined />}>
                   <Link to="/test">
                     DEV
                   </Link>
-              </Menu.Item>
+              </Menu.Item> */}
 
 
             {/*<SubMenu key="SubMenu" icon={<SettingOutlined />} title="Submenu">

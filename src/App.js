@@ -8,7 +8,7 @@ import Banner from './components/Home/Banner';
 import Headr from './components/Home/Header';
 import Main from './components/Home/Main';
 import Ressources from './components/Home/Ressource';
-import Register from "./components/User/register";
+// import Register from "./components/User/register";
 import Login from "./components/User/login";
 import './components/Home/style/style';
 
@@ -24,7 +24,7 @@ import {
 import { createBrowserHistory } from 'history'
 
 
-import PopupPanel from './components/map/popup-panel';
+// import PopupPanel from './components/map/popup-panel';
 
 
 function App() {
@@ -32,13 +32,14 @@ function App() {
   //will be useful evntually for page titles
   const [title, updateTitle] = useState(null);
   const [errorMessage, updateErrorMessage] = useState(null);
+  const isConnected = (localStorage['ACCESS_TOKEN_NAME'] != null? true:false );
 
   const { Content } = Layout;
   return (
     <div className="home-page">
       <Router history={createBrowserHistory}>
         {/* Main header component with navigation and profile */}
-        <Headr key="header" />
+        <Headr key="header" isConnected={isConnected}/>
         <Switch>
         
           <Route exact path="/">
@@ -59,18 +60,18 @@ function App() {
     
           <Route exact path='/map' component={Main} />
 
-          <Route exact path='/Register'>
+          {/* <Route exact path='/Register'>
             <Register showError={updateErrorMessage} updateTitle={updateTitle}/>
-          </Route>
+          </Route> */}
           {/* To be combined conditionally in next commit */}
           <Route exact path='/Login'>
             <Login showError={updateErrorMessage} updateTitle={updateTitle}/>
           </Route>
 
           {/* Development testing page, will get rid of */}
-          <Route exact path='/test'>
+          {/* <Route exact path='/test'>
             <PopupPanel showError={updateErrorMessage} updateTitle={updateTitle}/>
-          </Route>
+          </Route> */}
 
           {/* Private Route for only connected users */}
           <PrivateRoute path="/dashboard">

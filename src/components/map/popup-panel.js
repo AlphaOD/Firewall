@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { List, Typography, Divider } from 'antd';
+import React from 'react';
+import { Divider } from 'antd';
 import "./style/popup.css";
 import {
   HomeOutlined,
@@ -9,11 +9,7 @@ import icon from '../../static/img/firewallLogo.svg';
 
 export default function PopupPanel(props) {
   // Screen for map interaction
-  const [popupInfo, setInfo] = useState({
-      props,
-    });
     
-
     if(props.type){
       return (
         <div className="popup-panel fire">
