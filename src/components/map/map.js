@@ -31,7 +31,8 @@ export default class Map extends Component {
         zoom: 8
       },
       showPopup: false,
-      popupInfo: null,
+      popupInfo: 0,
+      popupType: true,
       isLoaded: false,
       data: null,
     };
@@ -61,7 +62,7 @@ export default class Map extends Component {
   }
 
   _onClickMarker = shelter => {
-    this.setState({popupInfo: shelter, showPopup:true});
+    this.setState({popupInfo: shelter, showPopup:true, popupType:false});
   };
 
   _sourceRef = React.createRef();
@@ -77,8 +78,6 @@ export default class Map extends Component {
     };
   
   _onClick = event => {
-    console.log(event);
-    console.log(this.state.viewport.zoom);
 
     //Regular click to close popup
     if (event.features[0] === undefined ){
@@ -88,14 +87,11 @@ export default class Map extends Component {
       return
     }//Specific fire click
     else if (event.features[0].layer.id !== "clusters"){
-      console.log("IN")
       const feature = event.features[0];
-      // console.log(popup);
-      // _renderPopup
-      // console.log(popup);
       this.setState({
         showPopup: true,
-        popupInfo: feature
+        popupInfo: feature,
+        popupType: true
       });
 
       return
@@ -258,7 +254,9 @@ export default class Map extends Component {
               <Layer {...unclusteredPointLayer} />
             </Source>
 
-            {/* <Pins data={data} onClick={this._onClickMarker} /> */}
+            {/* Pins for shelters, visible at zoom level >= 5 */}
+              {this.state.viewport.zoom >= 5?(
+            <Pins data={data} onClick={this._onClickMarker} />): <div/>}
             
 
             {/* Popup - Fire Informations */}
@@ -267,7 +265,8 @@ export default class Map extends Component {
               latitude={37.78}
               longitude={-122.41}
               closeButton={true}
-              closeOnClick={false}/>
+              closeOnClick={false}
+              type={this.state.popupType}/>
               }
               
           </ReactMapGL>): 
