@@ -51,7 +51,7 @@ export default function Header(props) {
     <header className="header">
       <div className="header-content">
         <h1>
-          <a href="./index.js">
+          <a href="./">
           </a>
         </h1>
           {/* Routes to be programmed when starting the extra pages */}
