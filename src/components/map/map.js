@@ -128,7 +128,7 @@ export default class Map extends Component {
   
   render() {
     const {viewport} = this.state;
-    const mapdata = require('../../static/ex/fire.geojson');
+    const mapdata = require('../../static/ex/fire.json');
     const { isLoaded, data } = this.state;
     return (
       <div>
